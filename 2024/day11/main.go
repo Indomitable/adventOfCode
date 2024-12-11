@@ -6,9 +6,11 @@ import (
 	"helpers"
 	"io"
 	"os"
+	"time"
 )
 
 func main() {
+	start := time.Now()
 	f, _ := os.Open("task.in")
 	defer f.Close()
 	content, _ := io.ReadAll(f)
@@ -16,11 +18,11 @@ func main() {
 	numbers := helpers.MapSlice(stones, helpers.BytesToLong)
 
 	m := group(numbers)
-	for i := range 75 {
+	for range 75 {
 		m = processStep2(m) //slices.Collect(process(numbers))
-		fmt.Printf("Blink: %d: %d\n", i+1, countStones(m))
 	}
-
+	fmt.Printf("Stones count: %d\n", countStones(m))
+	fmt.Printf("Time: %v\n", time.Since(start))
 }
 
 func processStep1(stones []int64) func(func(int64) bool) {
