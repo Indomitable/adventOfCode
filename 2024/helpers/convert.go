@@ -12,12 +12,6 @@ func BytesToLong(buffer []byte) int64 {
 	return result
 }
 
-func ToDigits(n int64) (res []int) {
-	for i := n; i > 0; {
-
-	}
-}
-
 func ByteToInt(b byte) int {
 	return int(b - 48)
 }
